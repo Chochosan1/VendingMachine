@@ -9,7 +9,16 @@
         font-size: var(--font-size-title);
     }
 
+    .error-text{
+        color: red;
+    }
+
     .submit-button{
         width: 200px;
     }
 }
+
+.multiline-snackbar {
+    background: #1fcd98;
+    white-space: pre-wrap
+  }

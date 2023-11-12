@@ -10,6 +10,8 @@ import { MockDataService } from './mockDatabase/mock-data.service';
 import { VendingMachineComponent } from './vending-machine/vending-machine.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     HttpClientInMemoryWebApiModule.forRoot(MockDataService),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

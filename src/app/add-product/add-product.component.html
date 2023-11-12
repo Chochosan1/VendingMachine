@@ -1,24 +1,34 @@
 <div class="page-wrapper">
     <div class="title">Add Product</div>
+    <div><i class="bi bi-exclamation-triangle"></i> If you reload the app you will lose all manually added products</div>
     <form class="d-flex flex-column w-50" [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" id="title" formControlName="title" class="form-control">
+            <div class="error-text" *ngIf="hasError('title', 'required')"><i class="bi bi-exclamation-triangle"></i> Title is required</div>
+            <div class="error-text" *ngIf="hasError('title', 'maxlength')"><i class="bi bi-exclamation-triangle"></i> Title must be up to 20 characters</div>
         </div>
 
         <div class="form-group">
             <label for="description">Description:</label>
             <textarea id="description" formControlName="description" class="form-control"></textarea>
+            <div class="error-text" *ngIf="hasError('description', 'required')"><i class="bi bi-exclamation-triangle"></i> Description is required</div>
+            <div class="error-text" *ngIf="hasError('description', 'maxlength')"><i class="bi bi-exclamation-triangle"></i> Description must be up to 30 characters</div>
         </div>
 
         <div class="form-group">
             <label for="price">Price:</label>
             <input type="number" id="price" formControlName="price" class="form-control">
+            <div class="error-text" *ngIf="hasError('price', 'required')"><i class="bi bi-exclamation-triangle"></i> Price is required</div>
+            <div class="error-text" *ngIf="hasError('price', 'min')"><i class="bi bi-exclamation-triangle"></i> Price can't be less than zero</div>
         </div>
 
         <div class="form-group">
-            <label for="inStockAmount">In Stock Amount:</label>
+            <label for="inStockAmount">In stock amount:</label>
             <input type="number" id="inStockAmount" formControlName="inStockAmount" class="form-control">
+            <div class="error-text" *ngIf="hasError('inStockAmount', 'required')"><i class="bi bi-exclamation-triangle"></i> Amount in stock is required</div>
+            <div class="error-text" *ngIf="hasError('inStockAmount', 'min')"><i class="bi bi-exclamation-triangle"></i> Amount in stock can't be less than zero</div>
+            <div class="error-text" *ngIf="hasError('inStockAmount', 'max')"><i class="bi bi-exclamation-triangle"></i> Each product's amount in stock can be a maximum of 15</div>
         </div>
 
         <div class="form-group">
@@ -26,6 +36,7 @@
             <input type="text" id="imageUrl" formControlName="imageUrl" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-primary submit-button m-auto mt-3">Submit</button>
+        <button type="submit" class="btn btn-primary submit-button m-auto mt-3" [disabled]="!productForm.valid">{{ productForm.valid ? 'Submit' : 'Form Invalid' }}</button>
     </form>
+    <button class="btn btn-warning submit-button m-auto mt-3" routerLink="/vending"><i class="bi bi-box-arrow-left"></i> Back to Vending</button>
 </div>
