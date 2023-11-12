@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../requests/http.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Product {
   id: string;
   title: string;
   description: string;
+  price: number;
+  inStockAmount: number;
 }
 
 /**Provides all necessary data and CRUD operations. */
@@ -18,9 +20,14 @@ export class DataService {
   constructor(private httpService: HttpService) {
     this.httpService.getProducts$().subscribe((products) => {
       this.products$.next(products);
-      console.log('Initialize data');
-      console.log(this.products$.getValue()?.slice());
+
+      // console.log('Initialize data');
+      // console.log(this.products$.getValue()?.slice());
     });
+  }
+
+  public getProducts$(): Observable<Product[] | undefined> {
+    return this.products$;
   }
 
   public updateProduct(newProduct: Product): void {
@@ -31,8 +38,8 @@ export class DataService {
       currentProducts[productToManipulateIndex] = newProduct;
       this.products$.next(currentProducts);
 
-      console.log('After update data');
-      console.log(this.products$.getValue()?.slice());
+      // console.log('After update data');
+      // console.log(this.products$.getValue()?.slice());
     }
   }
 
@@ -42,7 +49,8 @@ export class DataService {
     if (currentProducts) {
       currentProducts.push(newProduct);
       this.products$.next(currentProducts);
-      console.log(this.products$.getValue()?.slice());
+
+      // console.log(this.products$.getValue()?.slice());
     }
   }
 
@@ -53,7 +61,8 @@ export class DataService {
     if (currentProducts && productToDeleteIndex && productToDeleteIndex > -1) {
       currentProducts.splice(productToDeleteIndex, 1);
       this.products$.next(currentProducts);
-      console.log(this.products$.getValue()?.slice());
+
+      // console.log(this.products$.getValue()?.slice());
     }
   }
 }

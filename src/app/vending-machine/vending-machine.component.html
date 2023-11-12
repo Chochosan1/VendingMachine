@@ -1,1 +1,9 @@
-<p>vending-machine works!</p>
+<div class="page-wrapper">
+    <div class="products-wrapper">
+        <div *ngFor="let product of productsToDisplay$ | async" class="product">
+            <div class="title">
+                {{product.title}}
+            </div>
+        </div>
+    </div>
+</div>
