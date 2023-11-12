@@ -1,19 +1,25 @@
-.page-wrapper{
+.page-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 
-    .title{
+    .title {
         font-size: var(--font-size-title);
+
+        @media screen and (max-width: 480px) {
+            .title {
+                font-size: var(--font-size-sub-title);
+            }
+          }
     }
 
-    .error-text{
+    .error-text {
         color: red;
     }
 
-    .submit-button{
+    .submit-button {
         width: 200px;
     }
 }
