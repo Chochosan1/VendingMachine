@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  public productForm: FormGroup = new FormGroup({});
+  protected productForm: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder, private dataService: DataService, private snackBar: MatSnackBar) {}
 
@@ -18,17 +18,17 @@ export class AddProductComponent implements OnInit {
     this.createForm();
   }
 
-  createForm() {
+  private createForm() {
     this.productForm = this.fb.group({
       title: ['', [Validators.required, Validators.maxLength(20)]],
       description: ['', [Validators.required, Validators.maxLength(30)]],
-      price: [0, [Validators.required, Validators.min(0)]],
-      inStockAmount: [0, [Validators.required, Validators.min(0), Validators.max(15)]],
+      price: ['', [Validators.required, Validators.min(0.1)]],
+      inStockAmount: ['', [Validators.required, Validators.min(0), Validators.max(15)]],
       imageUrl: ['https://i0.wp.com/sumac.com.hk/wp-content/uploads/2022/11/placeholder.png?ssl=1', Validators.required],
     });
   }
 
-  public onSubmit(form: FormGroup): void {
+  protected onSubmit(form: FormGroup): void {
     console.log('Valid?', form.valid);
     console.log('Title', form.value.title);
     console.log('Desc', form.value.description);
@@ -60,7 +60,7 @@ export class AddProductComponent implements OnInit {
   }
 
   //helper to determine if the control has a certain type of error (only if it has been interacted with)
-  public hasError(field: string, errorType: string): boolean | null {
+  protected hasError(field: string, errorType: string): boolean | null {
     const control = this.productForm.get(field);
     return control && (control.dirty || control.touched) && control.hasError(errorType);
   }

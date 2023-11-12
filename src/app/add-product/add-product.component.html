@@ -20,7 +20,7 @@
             <label for="price">Price:</label>
             <input type="number" id="price" formControlName="price" class="form-control">
             <div class="error-text" *ngIf="hasError('price', 'required')"><i class="bi bi-exclamation-triangle"></i> Price is required</div>
-            <div class="error-text" *ngIf="hasError('price', 'min')"><i class="bi bi-exclamation-triangle"></i> Price can't be less than zero</div>
+            <div class="error-text" *ngIf="hasError('price', 'min')"><i class="bi bi-exclamation-triangle"></i> Price can't be less than 0.1 BGN</div>
         </div>
 
         <div class="form-group">
