@@ -4,7 +4,7 @@ import { VendingMachineComponent } from './vending-machine/vending-machine.compo
 
 const routes: Routes = [
   { path: '', redirectTo: '/vending', pathMatch: 'full' },
-  { path: 'welcome', component: VendingMachineComponent },
+  { path: 'vending', component: VendingMachineComponent },
   { path: '**', component: VendingMachineComponent }
 ];
 
