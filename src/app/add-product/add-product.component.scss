@@ -9,10 +9,18 @@
         font-size: var(--font-size-title);
 
         @media screen and (max-width: 480px) {
-            .title {
+            & {
                 font-size: var(--font-size-sub-title);
             }
           }
+    }
+
+    .form-wrapper{
+        display: flex;
+        flex-direction: column;
+        max-width: 850px;
+        width: 100%;
+        padding: 10px;
     }
 
     .error-text {
