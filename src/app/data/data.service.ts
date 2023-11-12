@@ -3,7 +3,7 @@ import { HttpService } from '../requests/http.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Product {
-  id: string;
+  id?: string;
   title: string;
   description: string;
   price: number;

@@ -1,0 +1,24 @@
+.page-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .title{
+        font-size: var(--font-size-title);
+    }
+
+    .error-text{
+        color: red;
+    }
+
+    .submit-button{
+        width: 200px;
+    }
+}
+
+.multiline-snackbar {
+    background: #1fcd98;
+    white-space: pre-wrap
+  }
