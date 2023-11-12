@@ -11,6 +11,7 @@
         <div *ngFor="let product of productsToDisplay$ | async" class="product mt-3">
             <div class="product-content">
                 <img [src]="product.imageUrl" alt="{{product.title}}">
+                <div class="line-accent"></div>
                 <div class="title">
                     {{product.title}}
                 </div>
@@ -21,9 +22,9 @@
                    Price: {{product.price}} BGN
                 </div>
                 <div class="inStockAmount">
-                   <i>In stock: {{product.inStockAmount}}</i>
+                   In stock: {{product.inStockAmount}}
                 </div>
-                <button class="btn btn-primary mt-3 mb-1">Buy</button>
+                <button class="btn btn-primary mt-3 mb-3"><i class="bi bi-wallet2"></i> Purchase</button>
             </div>     
         </div>
     </div>
