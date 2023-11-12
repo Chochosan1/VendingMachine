@@ -8,17 +8,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MockDataService } from './mockDatabase/mock-data.service';
 import { VendingMachineComponent } from './vending-machine/vending-machine.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VendingMachineComponent
+    VendingMachineComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(MockDataService, { delay: 1000 }),
+    HttpClientInMemoryWebApiModule.forRoot(MockDataService),
   ],
   providers: [],
   bootstrap: [AppComponent]

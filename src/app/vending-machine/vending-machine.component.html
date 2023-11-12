@@ -1,1 +1,31 @@
-<p>vending-machine works!</p>
+<div class="page-wrapper">
+    <div class="d-flex flex-column align-items-center">
+        <div class="page-title mt-3">
+            Refreshments!
+        </div>
+        <div class="new-product-button w-50">
+            <button class="btn btn-primary" routerLink="/add-product"><i class="bi bi-patch-plus"></i> New Product</button>
+        </div>
+    </div>
+    <div class="products-wrapper mt-3 mb-3">
+        <div *ngFor="let product of productsToDisplay$ | async" class="product mt-3">
+            <div class="product-content">
+                <img [src]="product.imageUrl" alt="{{product.title}}">
+                <div class="line-accent"></div>
+                <div class="title">
+                    {{product.title}}
+                </div>
+                <div class="description">
+                    {{product.description}}
+                </div>
+                <div class="price">
+                   Price: {{product.price}} BGN
+                </div>
+                <div class="inStockAmount">
+                   In stock: {{product.inStockAmount}}
+                </div>
+                <button class="btn btn-primary mt-3 mb-3"><i class="bi bi-wallet2"></i> Purchase</button>
+            </div>     
+        </div>
+    </div>
+</div>
