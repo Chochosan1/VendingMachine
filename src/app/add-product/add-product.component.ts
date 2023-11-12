@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService, Product } from '../data/data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 /**Handles all logic for the 'Add New Product' form. */
 @Component({
@@ -12,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AddProductComponent implements OnInit {
   protected productForm: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder, private dataService: DataService, private snackBar: MatSnackBar) {}
+  constructor(private fb: FormBuilder, private dataService: DataService, private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -36,7 +37,7 @@ export class AddProductComponent implements OnInit {
     console.log('inStockAmount', form.value.inStockAmount);
     console.log('imageUrl', form.value.imageUrl);
 
-    if(form.valid){
+    if (form.valid) {
       let newProduct: Product = {
         title: form.value.title,
         description: form.value.description,
@@ -44,19 +45,23 @@ export class AddProductComponent implements OnInit {
         inStockAmount: form.value.inStockAmount,
         imageUrl: form.value.imageUrl
       }
-  
+
       this.addNewProduct(newProduct);
     }
   }
 
-  private addNewProduct(newProduct: Product): void{
+  private addNewProduct(newProduct: Product): void {
     this.dataService.createProduct(newProduct);
 
-    this.snackBar.open(`${newProduct.title} added successfully! You will be redirected to the vending machine in 3 seconds.`, 'Close', {
+    const snackBarRef = this.snackBar.open(`${newProduct.title} added successfully! You will be redirected to the vending machine in 3 seconds. Or you can manually do it.`, 'Close', {
+      duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      panelClass: ['multiline-snackbar']
     });
+
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.router.navigate(['/vending']);
+    })
   }
 
   //helper to determine if the control has a certain type of error (only if it has been interacted with)
