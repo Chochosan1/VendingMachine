@@ -18,7 +18,7 @@ import { VendingMachineComponent } from './vending-machine/vending-machine.compo
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(MockDataService, { delay: 1000 }),
+    HttpClientInMemoryWebApiModule.forRoot(MockDataService),
   ],
   providers: [],
   bootstrap: [AppComponent]
