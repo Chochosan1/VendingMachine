@@ -8,6 +8,7 @@ export interface Product {
   description: string;
 }
 
+/**Provides all necessary data and CRUD operations. */
 @Injectable({
   providedIn: 'root'
 })
@@ -26,8 +27,7 @@ export class DataService {
     const currentProducts = this.products$.getValue();
     let productToManipulateIndex = currentProducts?.findIndex(d => d.id === newProduct.id);
 
-    if (currentProducts && productToManipulateIndex !== undefined && productToManipulateIndex !== -1)
-    {
+    if (currentProducts && productToManipulateIndex && productToManipulateIndex > -1) {
       currentProducts[productToManipulateIndex] = newProduct;
       this.products$.next(currentProducts);
 
@@ -36,21 +36,21 @@ export class DataService {
     }
   }
 
-  public createProduct(newProduct: Product): void{
+  public createProduct(newProduct: Product): void {
     const currentProducts = this.products$.getValue();
-  
-    if(currentProducts){
+
+    if (currentProducts) {
       currentProducts.push(newProduct);
       this.products$.next(currentProducts);
       console.log(this.products$.getValue()?.slice());
     }
   }
 
-  public deleteProduct(idToDelete: string): void{
+  public deleteProduct(idToDelete: string): void {
     const currentProducts = this.products$.getValue();
     let productToDeleteIndex = currentProducts?.findIndex(d => d.id === idToDelete);
 
-    if(currentProducts && productToDeleteIndex !== undefined && productToDeleteIndex !== -1){
+    if (currentProducts && productToDeleteIndex && productToDeleteIndex > -1) {
       currentProducts.splice(productToDeleteIndex, 1);
       this.products$.next(currentProducts);
       console.log(this.products$.getValue()?.slice());

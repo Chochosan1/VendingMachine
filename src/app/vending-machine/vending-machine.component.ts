@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../requests/http.service';
 import { DataService, Product } from '../data/data.service';
 
+/**Displays the information and allows for user interactions. */
 @Component({
   selector: 'app-vending-machine',
   templateUrl: './vending-machine.component.html',

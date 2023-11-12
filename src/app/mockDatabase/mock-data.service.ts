@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService, RequestInfo } from 'angular-in-memory-web-api';
-import { Observable } from 'rxjs';
 
+/**A fake API to simulate exposed endpoints. */
 @Injectable({
   providedIn: 'root'
 })

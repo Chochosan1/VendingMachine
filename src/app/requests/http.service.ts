@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../data/data.service';
 
+/**The entire logic for backend requests resides here. */
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +13,7 @@ export class HttpService {
 
   private getProductsUrl = 'api/products';
 
+  /**A get request to the products endpoint. @returns A product array observable. */
   public getProducts$(): Observable<Product[]>{
     return this.httpClient.get<Product[]>(this.getProductsUrl);
   }
