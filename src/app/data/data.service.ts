@@ -8,6 +8,7 @@ export interface Product {
   description: string;
   price: number;
   inStockAmount: number;
+  imageUrl: string;
 }
 
 /**Provides all necessary data and CRUD operations. */
@@ -47,6 +48,7 @@ export class DataService {
     const currentProducts = this.products$.getValue();
 
     if (currentProducts) {
+      newProduct.id = this.generateUniqueId();
       currentProducts.push(newProduct);
       this.products$.next(currentProducts);
 
@@ -64,5 +66,12 @@ export class DataService {
 
       // console.log(this.products$.getValue()?.slice());
     }
+  }
+
+  private generateUniqueId(): string {
+    const timestamp = new Date().getTime().toString(16); // Convert timestamp to hexadecimal string
+    const randomPart = Math.floor(Math.random() * 10000).toString(16); // Generate random part
+  
+    return timestamp + randomPart;
   }
 }

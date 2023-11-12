@@ -1,8 +1,21 @@
 <div class="page-wrapper">
-    <div class="products-wrapper">
+    <div class="page-title">
+        Refreshments!
+    </div>
+    <div class="products-wrapper mt-3 mb-3">
         <div *ngFor="let product of productsToDisplay$ | async" class="product">
+            <img [src]="product.imageUrl" alt="{{product.title}}" class="product-image">
             <div class="title">
                 {{product.title}}
+            </div>
+            <div class="description">
+                {{product.description}}
+            </div>
+            <div class="price">
+                {{product.price}}
+            </div>
+            <div class="inStockAmount">
+                {{product.inStockAmount}}
             </div>
         </div>
     </div>
