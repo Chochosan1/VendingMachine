@@ -6,6 +6,12 @@
 
     .page-title {
         font-size: var(--font-size-title);
+
+        @media screen and (max-width: 480px) {
+            & {
+                font-size: var(--font-size-sub-title);
+            }
+          }
     }
 
     .products-wrapper {

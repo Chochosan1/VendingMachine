@@ -1,24 +1,33 @@
-.page-wrapper{
+.page-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 
-    .title{
+    .title {
         font-size: var(--font-size-title);
+
+        @media screen and (max-width: 480px) {
+            & {
+                font-size: var(--font-size-sub-title);
+            }
+          }
     }
 
-    .error-text{
+    .form-wrapper{
+        display: flex;
+        flex-direction: column;
+        max-width: 850px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .error-text {
         color: red;
     }
 
-    .submit-button{
+    .submit-button {
         width: 200px;
     }
 }
-
-.multiline-snackbar {
-    background: #1fcd98;
-    white-space: pre-wrap
-  }
