@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService, Product } from '../data/data.service';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { DataService } from '../data/data.service';
 
 /**Displays the information and allows for user interactions. */
 @Component({
