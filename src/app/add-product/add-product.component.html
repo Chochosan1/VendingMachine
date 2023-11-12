@@ -1,6 +1,6 @@
 <div class="page-wrapper">
     <div class="title">Add Product</div>
-    <form class="w-50" [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
+    <form class="d-flex flex-column w-50" [formGroup]="productForm" (ngSubmit)="onSubmit(productForm)">
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" id="title" formControlName="title" class="form-control">
@@ -26,6 +26,6 @@
             <input type="text" id="imageUrl" formControlName="imageUrl" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <button type="submit" class="btn btn-primary submit-button m-auto mt-3">Submit</button>
     </form>
 </div>
