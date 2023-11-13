@@ -6,7 +6,7 @@
         <div class="form-group">
             <input type="amount" id="amount" formControlName="amount" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary submit-button mt-3 mb-3" [disabled]="!coinForm.valid">{{ coinForm.valid ? 'Insert' : 'Invalid Amount' }}</button>
+        <button type="submit" class="btn btn-primary submit-button mt-3 mb-3" [disabled]="!coinForm.valid"> <i class="bi bi-plus-circle"></i> {{ coinForm.valid ? 'Insert' : 'Invalid Amount' }}</button>
     </form>
 </div>
 
