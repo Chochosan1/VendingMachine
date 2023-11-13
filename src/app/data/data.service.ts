@@ -17,7 +17,10 @@ export interface Product {
 })
 export class DataService {
   private products$ = new BehaviorSubject<Product[] | undefined>(undefined);
-  public coinBalance: number = 0;
+  private _coinBalance: number = 0;
+  get coinBalance(): number {
+    return this._coinBalance;
+}
 
   constructor(private httpService: HttpService) {
     this.initializeData();
@@ -65,6 +68,14 @@ export class DataService {
       currentProducts.splice(productToDeleteIndex, 1);
       this.products$.next(currentProducts);
     }
+  }
+
+  public addCoinBalance(coinsToAdd: number): void{
+    this._coinBalance += coinsToAdd;
+  }
+
+  public removeCoinBalance(coinsToRemove: number): void{
+    this._coinBalance -= coinsToRemove;
   }
 
   //helper that generates a unique id that won't ever get duplicated. Uses a current timestamp (unique) + a random number in 

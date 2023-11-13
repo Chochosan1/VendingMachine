@@ -9,7 +9,7 @@
         <div class="add-coins-button-fixed-container">
             <div class="button-and-label-wrapper">
                 <button class="add-coins-button" (click)="openCoinForm()"><i class="bi bi-plus"></i></button>
-                <div class="coins-label">Balance: {{dataService.coinBalance}} BGN</div>
+             <div class="coins-label">Balance: {{dataService.coinBalance | number:'1.0-1'}} BGN</div>  <!-- Format: at least 1 digit before decimal; at least 0 digits after decimal + max 1 digit after decimal -->
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
                 <div class="inStockAmount">
                    In stock: {{product.inStockAmount}}
                 </div>
-                <button class="btn btn-primary mt-3 mb-3"><i class="bi bi-wallet2"></i> Purchase</button>
+                <button (click)="purchaseProduct(product)" class="btn btn-primary mt-3 mb-3"><i class="bi bi-wallet2"></i> Purchase</button>
             </div>     
         </div>
     </div>

@@ -22,7 +22,13 @@ export class AddCoinsComponent {
   public onSubmit(form: FormGroup): void{
     if (form.valid){
       const amountToAdd = parseFloat(form.value.amount);
-      this.dataService.coinBalance += amountToAdd;
+      this.dataService.addCoinBalance(amountToAdd);
     }
+  }
+
+   //helper to determine if the control has a certain type of error (only if it has been interacted with)
+   protected hasError(field: string, errorType: string): boolean | null {
+    const control = this.coinForm.get(field);
+    return control && (control.dirty || control.touched) && control.hasError(errorType);
   }
 }
