@@ -22,7 +22,7 @@ export class AddCoinsComponent {
   public onSubmit(form: FormGroup): void{
     if (form.valid){
       const amountToAdd = parseFloat(form.value.amount);
-      this.dataService.coinBalance += amountToAdd;
+      this.dataService.addCoinBalance(amountToAdd);
     }
   }
 

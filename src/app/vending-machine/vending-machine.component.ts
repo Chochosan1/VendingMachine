@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../data/data.service';
+import { DataService, Product } from '../data/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCoinsComponent } from '../add-coins/add-coins.component';
 
@@ -19,5 +19,17 @@ export class VendingMachineComponent {
     const dialogRef = this.dialog.open(AddCoinsComponent, {
       width: '250px',
     });
+  }
+
+  protected purchaseProduct(product: Product): void{
+    console.log('purchase attempt');
+    if(this.dataService.coinBalance >= product.price){
+      product.inStockAmount -= 1;
+
+      this.dataService.updateProduct(product);
+      this.dataService.removeCoinBalance(product.price);
+
+      console.log(`purchase success for: ${product.title} with id ${product.id}`);
+    }
   }
 }
