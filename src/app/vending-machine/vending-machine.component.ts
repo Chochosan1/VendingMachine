@@ -22,28 +22,30 @@ export class VendingMachineComponent {
     });
   }
 
-  protected purchaseProduct(product: Product): void{
-    if(this.dataService.coinBalance >= product.price){
-      product.inStockAmount -= 1;
+  protected purchaseProduct(product: Product): void {
+    if (this.dataService.coinBalance >= product.price) {
+      if(product.inStockAmount > 0){
+        product.inStockAmount -= 1;
 
-      this.dataService.updateProduct(product);
-      this.dataService.removeCoinBalance(product.price);
-
-      const remainingCoinBalance = this.dataService.coinBalance.toFixed(1);
-
-      const snackBarRef = this.snackBar.open(`You spent ${product.price} BGN for ${product.title}. Your change is ${remainingCoinBalance} BGN. Please, take it. Coin balance reset.`, 'Close', {
-        duration: 8000,
-         horizontalPosition: 'center',
-         verticalPosition: 'bottom',
-       });
-
-       this.dataService.resetCoinBalance();
+        this.dataService.updateProduct(product);
+        this.dataService.removeCoinBalance(product.price);
+  
+        const remainingCoinBalance = this.dataService.coinBalance.toFixed(1);
+  
+        const snackBarRef = this.snackBar.open(`You spent ${product.price} BGN for ${product.title}. Your change is ${remainingCoinBalance} BGN. Please, take it. Coin balance reset.`, 'Close', {
+          duration: 8000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+  
+        this.dataService.resetCoinBalance();
+      }
     }
-    else{
+    else {
       const neededAmount = (product.price - this.dataService.coinBalance).toFixed(1);
 
       const snackBarRef = this.snackBar.open(`Not enough balance to purchase ${product.title}. You need ${neededAmount} BGN more.`, 'Close', {
-       duration: 5000,
+        duration: 5000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom',
         panelClass: 'error-snackbar',
