@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService, Product } from '../data/data.service';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { DataService } from '../data/data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddCoinsComponent } from '../add-coins/add-coins.component';
 
 /**Displays the information and allows for user interactions. */
 @Component({
@@ -10,7 +11,13 @@ import { Observable } from 'rxjs';
 })
 export class VendingMachineComponent {
 
-  constructor(private dataService: DataService) { }
+  constructor(protected dataService: DataService, private dialog: MatDialog) { }
 
   public productsToDisplay$ = this.dataService.getProducts$();
+
+  protected openCoinForm(): void {
+    const dialogRef = this.dialog.open(AddCoinsComponent, {
+      width: '250px',
+    });
+  }
 }

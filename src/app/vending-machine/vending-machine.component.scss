@@ -11,7 +11,45 @@
             & {
                 font-size: var(--font-size-sub-title);
             }
-          }
+        }
+    }
+
+    .add-coins-button-fixed-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+
+        .button-and-label-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+            .add-coins-button {
+                background-color: rgb(81, 254, 51);
+                border: none;
+                color: white;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                font-size: 18px;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+                &:hover {
+                    background-color: #45a049;
+                }
+
+                i {
+                    font-size: 32px;
+                }
+            }
+        }
     }
 
     .products-wrapper {
@@ -37,12 +75,12 @@
                 padding: 5px;
                 gap: 5px;
 
-                .title{
+                .title {
                     font-size: var(--font-size-large);
                     font-weight: bold;
                 }
 
-                .inStockAmount{
+                .inStockAmount {
                     font-style: italic;
                 }
             }
