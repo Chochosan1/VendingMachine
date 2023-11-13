@@ -17,6 +17,7 @@ export interface Product {
 })
 export class DataService {
   private products$ = new BehaviorSubject<Product[] | undefined>(undefined);
+  public coinBalance: number = 0;
 
   constructor(private httpService: HttpService) {
     this.initializeData();

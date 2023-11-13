@@ -6,6 +6,12 @@
         <div class="new-product-button">
             <button class="btn btn-primary" routerLink="/add-product"><i class="bi bi-patch-plus"></i> New Product</button>
         </div>
+        <div class="add-coins-button-fixed-container">
+            <div class="button-and-label-wrapper">
+                <button class="add-coins-button" (click)="openCoinForm()"><i class="bi bi-plus"></i></button>
+                <div class="coins-label">Balance: {{dataService.coinBalance}} BGN</div>
+            </div>
+        </div>
     </div>
     <div class="products-wrapper mt-3 mb-3">
         <div *ngFor="let product of productsToDisplay$ | async" class="product mt-3">

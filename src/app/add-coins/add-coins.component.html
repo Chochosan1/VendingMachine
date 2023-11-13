@@ -1,0 +1,12 @@
+<div class="page-wrapper">
+    <div class="title mt-3 mb-3">
+        Insert Coins
+    </div>
+    <form class="d-flex flex-column align-items-center" [formGroup]="coinForm" (ngSubmit)="onSubmit(coinForm)">
+        <div class="form-group">
+            <input type="amount" id="amount" formControlName="amount" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary submit-button mt-3 mb-3" [disabled]="!coinForm.valid">{{ coinForm.valid ? 'Insert' : 'Invalid Amount' }}</button>
+    </form>
+</div>
+
