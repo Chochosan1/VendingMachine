@@ -34,6 +34,7 @@ export class AddCoinsComponent {
       duration: 1500,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
+      panelClass: 'success-snackbar',
     });
   }
 
