@@ -29,7 +29,15 @@ export class VendingMachineComponent {
       this.dataService.updateProduct(product);
       this.dataService.removeCoinBalance(product.price);
 
-      console.log(`purchase success for: ${product.title} with id ${product.id}`);
+      const remainingCoinBalance = this.dataService.coinBalance.toFixed(1);
+
+      const snackBarRef = this.snackBar.open(`You spent ${product.price} BGN for ${product.title}. Your change is ${remainingCoinBalance} BGN. Please, take it. Coin balance reset.`, 'Close', {
+        duration: 8000,
+         horizontalPosition: 'center',
+         verticalPosition: 'bottom',
+       });
+
+       this.dataService.resetCoinBalance();
     }
     else{
       const neededAmount = (product.price - this.dataService.coinBalance).toFixed(1);
