@@ -14,9 +14,43 @@
     --font-size-normal: 1em;
 }
 
-.line-accent{
+.line-accent {
     border: 1px solid #fca311;
     width: 125px;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//snackbar custom style for an error feedback
+.error-snackbar {
+    max-width: max-content !important;
+    color: white;
+    --mdc-snackbar-container-color: #721c24;
+    --mat-mdc-snack-bar-button-color: white;
+    border-color: #f5c6cb;
+
+    .mat-simple-snackbar-action {
+        color: white;
+    }
+}
+
+//snackbar custom style for a success feedback
+.success-snackbar {
+    max-width: max-content !important;
+    color: white;
+    --mdc-snackbar-container-color: #2a721c;
+    --mat-mdc-snack-bar-button-color: white;
+    border-color: #f5c6cb;
+
+    .mat-simple-snackbar-action {
+        color: white;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
