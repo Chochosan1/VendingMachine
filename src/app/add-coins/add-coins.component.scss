@@ -3,4 +3,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .title{
+        font-size: var(--font-size-large);
+    }
+
+    .allowed-coins{
+        text-align: center;
+        padding: 5px;
+    }
 }
