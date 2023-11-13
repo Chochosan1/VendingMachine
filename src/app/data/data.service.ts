@@ -78,6 +78,10 @@ export class DataService {
     this._coinBalance -= coinsToRemove;
   }
 
+  public resetCoinBalance(): void{
+    this._coinBalance = 0;
+  }
+
   //helper that generates a unique id that won't ever get duplicated. Uses a current timestamp (unique) + a random number in 
   //case multiple ids get generated at the same time
   private generateUniqueId(): string {

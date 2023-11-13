@@ -24,8 +24,6 @@ export class AddCoinsComponent {
     if (form.valid){
       const amountToAdd = parseFloat(form.value.amount);
       this.insertCoins(amountToAdd);
- 
-   
     }
   }
 
@@ -34,6 +32,17 @@ export class AddCoinsComponent {
 
     const snackBarRef = this.snackBar.open(`Added ${coinsToAdd} BGN to your vending machine balance!`, 'Close', {
       duration: 1500,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+
+  protected returnCoins(){
+    const balanceReturnedToUser = this.dataService.coinBalance;
+    this.dataService.resetCoinBalance();
+
+    const snackBarRef = this.snackBar.open(`${balanceReturnedToUser} BGN has been returned to you. Coin balance reset.`, 'Close', {
+      duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
     });
