@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../requests/http.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-
-export interface Product {
-  id?: string;
-  title: string;
-  description: string;
-  price: number;
-  inStockAmount: number;
-  imageUrl: string;
-}
+import { Product } from '../product.model';
 
 /**Provides all necessary data and CRUD operations. */
 @Injectable({
@@ -20,7 +12,7 @@ export class DataService {
   private _coinBalance: number = 0;
   get coinBalance(): number {
     return this._coinBalance;
-}
+  }
 
   constructor(private httpService: HttpService) {
     this.initializeData();
@@ -38,7 +30,7 @@ export class DataService {
   }
 
   /**Get all products as an array. */
-  public get products(): Product[] | undefined{
+  public get products(): Product[] | undefined {
     return this._products$.getValue();
   }
 
@@ -75,15 +67,15 @@ export class DataService {
     }
   }
 
-  public addCoinBalance(coinsToAdd: number): void{
+  public addCoinBalance(coinsToAdd: number): void {
     this._coinBalance += coinsToAdd;
   }
 
-  public removeCoinBalance(coinsToRemove: number): void{
+  public removeCoinBalance(coinsToRemove: number): void {
     this._coinBalance -= coinsToRemove;
   }
 
-  public resetCoinBalance(): void{
+  public resetCoinBalance(): void {
     this._coinBalance = 0;
   }
 

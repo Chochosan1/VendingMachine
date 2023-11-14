@@ -1,5 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Product } from '../data/data.service';
+import { Product } from '../product.model';
 
 export function UniquePriceValidator(existingProducts: Product[]): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {

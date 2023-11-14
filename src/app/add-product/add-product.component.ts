@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DataService, Product } from '../data/data.service';
+import { DataService } from '../data/data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UniquePriceValidator } from '../validators/uniquePriceValidator';
 import { MaxOneDecimalAllowed } from '../validators/maxOneDecimalValidator';
+import { Product } from '../product.model';
 
 /**Handles all logic for the 'Add New Product' form. */
 @Component({
@@ -32,13 +33,6 @@ export class AddProductComponent implements OnInit {
   }
 
   protected onSubmit(form: FormGroup): void {
-    console.log('Valid?', form.valid);
-    console.log('Title', form.value.title);
-    console.log('Desc', form.value.description);
-    console.log('Price', form.value.price);
-    console.log('inStockAmount', form.value.inStockAmount);
-    console.log('imageUrl', form.value.imageUrl);
-
     if (form.valid) {
       let newProduct: Product = {
         title: form.value.title,
