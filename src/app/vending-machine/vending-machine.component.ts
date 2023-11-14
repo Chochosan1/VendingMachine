@@ -14,7 +14,7 @@ export class VendingMachineComponent {
 
   constructor(protected dataService: DataService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
-  public productsToDisplay$ = this.dataService.getProducts$();
+  public productsToDisplay$ = this.dataService.products$;
 
   protected openCoinForm(): void {
     const dialogRef = this.dialog.open(AddCoinsComponent, {

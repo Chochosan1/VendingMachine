@@ -16,7 +16,7 @@ export interface Product {
   providedIn: 'root'
 })
 export class DataService {
-  private products$ = new BehaviorSubject<Product[] | undefined>(undefined);
+  private _products$ = new BehaviorSubject<Product[] | undefined>(undefined);
   private _coinBalance: number = 0;
   get coinBalance(): number {
     return this._coinBalance;
@@ -28,45 +28,50 @@ export class DataService {
 
   private initializeData(): void {
     this.httpService.getProducts$().subscribe((products) => {
-      this.products$.next(products);
+      this._products$.next(products);
     });
   }
 
   /**Get all products in the form of an observable. */
-  public getProducts$(): Observable<Product[] | undefined> {
-    return this.products$;
+  public get products$(): Observable<Product[] | undefined> {
+    return this._products$;
+  }
+
+  /**Get all products as an array. */
+  public get products(): Product[] | undefined{
+    return this._products$.getValue();
   }
 
   /**Updates an existing product. @argument Takes a new product object and will map it using its id */
   public updateProduct(newProduct: Product): void {
-    const currentProducts = this.products$.getValue();
+    const currentProducts = this._products$.getValue();
     let productToManipulateIndex = currentProducts?.findIndex(d => d.id === newProduct.id);
 
     if (currentProducts && productToManipulateIndex && productToManipulateIndex > -1) {
       currentProducts[productToManipulateIndex] = newProduct;
-      this.products$.next(currentProducts);
+      this._products$.next(currentProducts);
     }
   }
 
   /**Creates a new product. The id will be automatically generated so it's not necessary for the object to contain it. */
   public createProduct(newProduct: Product): void {
-    const currentProducts = this.products$.getValue();
+    const currentProducts = this._products$.getValue();
 
     if (currentProducts) {
       newProduct.id = this.generateUniqueId(); //generates a unique id to ensure that newly created products will not duplicate some of the existing ids
       currentProducts.push(newProduct);
-      this.products$.next(currentProducts);
+      this._products$.next(currentProducts);
     }
   }
 
   /**Removes a product. @argument Takes the id of the product. */
   public deleteProduct(idToDelete: string): void {
-    const currentProducts = this.products$.getValue();
+    const currentProducts = this._products$.getValue();
     let productToDeleteIndex = currentProducts?.findIndex(d => d.id === idToDelete);
 
     if (currentProducts && productToDeleteIndex && productToDeleteIndex > -1) {
       currentProducts.splice(productToDeleteIndex, 1);
-      this.products$.next(currentProducts);
+      this._products$.next(currentProducts);
     }
   }
 
