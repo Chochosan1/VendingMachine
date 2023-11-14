@@ -1,10 +1,11 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DataService } from '../data/data.service';
+import { DataService } from '../services/data/data.service';
 import { ValidCoinAmount } from '../validators/coinAmountValidator';
 import { MaxOneDecimalAllowed } from '../validators/maxOneDecimalValidator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ALLOWED_DENOMINATIONS } from '../app.constants';
 
 @Component({
   selector: 'app-add-coins',
@@ -13,6 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddCoinsComponent {
   coinForm: FormGroup = new FormGroup({});
+  allowedDenominations: number[] = ALLOWED_DENOMINATIONS;
 
   constructor(protected dataService: DataService, private formBuilder: FormBuilder, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<AddCoinsComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.coinForm = this.formBuilder.group({
@@ -20,14 +22,14 @@ export class AddCoinsComponent {
     });
   }
 
-  public onSubmit(form: FormGroup): void{
-    if (form.valid){
+  public onSubmit(form: FormGroup): void {
+    if (form.valid) {
       const amountToAdd = parseFloat(form.value.amount);
       this.insertCoins(amountToAdd);
     }
   }
 
-  private insertCoins(coinsToAdd: number): void{
+  private insertCoins(coinsToAdd: number): void {
     this.dataService.addCoinBalance(coinsToAdd);
 
     const snackBarRef = this.snackBar.open(`Added ${coinsToAdd} BGN to your vending machine balance!`, 'Close', {
@@ -38,7 +40,7 @@ export class AddCoinsComponent {
     });
   }
 
-  protected returnCoins(){
+  protected returnCoins() {
     const balanceReturnedToUser = this.dataService.coinBalance;
     this.dataService.resetCoinBalance();
 
@@ -49,8 +51,8 @@ export class AddCoinsComponent {
     });
   }
 
-   //helper to determine if the control has a certain type of error (only if it has been interacted with)
-   protected hasError(field: string, errorType: string): boolean | null {
+  //helper to determine if the control has a certain type of error (only if it has been interacted with)
+  protected hasError(field: string, errorType: string): boolean | null {
     const control = this.coinForm.get(field);
     return control && (control.dirty || control.touched) && control.hasError(errorType);
   }
