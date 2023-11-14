@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DataService } from '../data/data.service';
+import { DataService } from '../services/data/data.service';
 import { ValidCoinAmount } from '../validators/coinAmountValidator';
 import { MaxOneDecimalAllowed } from '../validators/maxOneDecimalValidator';
 import { MatSnackBar } from '@angular/material/snack-bar';

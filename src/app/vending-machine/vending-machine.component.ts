@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../data/data.service';
+import { DataService } from '../services/data/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddCoinsComponent } from '../add-coins/add-coins.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,6 +16,7 @@ export class VendingMachineComponent {
   constructor(protected dataService: DataService, private dialog: MatDialog, private snackBar: MatSnackBar) { }
 
   public productsToDisplay$ = this.dataService.products$;
+  public coinBalance$ = this.dataService.coinBalance$;
 
   protected openCoinForm(): void {
     const dialogRef = this.dialog.open(AddCoinsComponent, {
@@ -24,7 +25,7 @@ export class VendingMachineComponent {
   }
 
   protected purchaseProduct(product: Product): void {
-    if (this.dataService.coinBalance >= product.price) {
+    if (this.dataService.hasEnoughCoins(product.price)) {
       if (product.inStockAmount > 0) {
         product.inStockAmount -= 1;
 

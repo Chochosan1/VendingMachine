@@ -9,7 +9,7 @@
         <div class="add-coins-button-fixed-container">
             <div class="button-and-label-wrapper">
                 <button class="add-coins-button" (click)="openCoinForm()"><i class="bi bi-plus"></i></button>
-             <div class="coins-label">Balance: {{dataService.coinBalance | number:'1.0-1'}} BGN</div>  <!-- Format: at least 1 digit before decimal; at least 0 digits after decimal + max 1 digit after decimal -->
+             <div class="coins-label">Balance: {{ coinBalance$ | async | number:'1.0-1'}} BGN</div>  <!-- Format: at least 1 digit before decimal; at least 0 digits after decimal + max 1 digit after decimal -->
             </div>
         </div>
     </div>

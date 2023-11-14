@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from '../product.model';
+import { Product } from '../../product.model';
 
 /**The entire logic for backend requests resides here. */
 @Injectable({

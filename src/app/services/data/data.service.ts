@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../requests/http.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Product } from '../product.model';
+import { Product } from '../../product.model';
 
 /**Provides all necessary data and CRUD operations. */
 @Injectable({
@@ -9,10 +9,7 @@ import { Product } from '../product.model';
 })
 export class DataService {
   private _products$ = new BehaviorSubject<Product[] | undefined>(undefined);
-  private _coinBalance: number = 0;
-  get coinBalance(): number {
-    return this._coinBalance;
-  }
+  private _coinBalance$ = new BehaviorSubject<number>(0);
 
   constructor(private httpService: HttpService) {
     this.initializeData();
@@ -22,6 +19,14 @@ export class DataService {
     this.httpService.getProducts$().subscribe((products) => {
       this._products$.next(products);
     });
+  }
+
+  public get coinBalance$(): Observable<number> {
+    return this._coinBalance$;
+  }
+
+  public get coinBalance(): number {
+    return this._coinBalance$.getValue();
   }
 
   /**Get all products in the form of an observable. */
@@ -68,15 +73,21 @@ export class DataService {
   }
 
   public addCoinBalance(coinsToAdd: number): void {
-    this._coinBalance += coinsToAdd;
+    const finalAmount = this._coinBalance$.getValue() + coinsToAdd;
+    this._coinBalance$.next(finalAmount);
   }
 
   public removeCoinBalance(coinsToRemove: number): void {
-    this._coinBalance -= coinsToRemove;
+    const finalAmount = this._coinBalance$.getValue() - coinsToRemove;
+    this._coinBalance$.next(finalAmount);
   }
 
   public resetCoinBalance(): void {
-    this._coinBalance = 0;
+    this._coinBalance$.next(0);
+  }
+
+  public hasEnoughCoins(amountToCheck: number): boolean {
+    return this._coinBalance$.getValue() >= amountToCheck;
   }
 
   //helper that generates a unique id that won't ever get duplicated. Uses a current timestamp (unique) + a random number in 
