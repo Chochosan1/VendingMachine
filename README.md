@@ -7,9 +7,9 @@ Versions:
 - Node: 19.8.1
 - Package manager: npm 9.5.1
 
-Online hosting: 
+**Online hosting**: 
 
-- If you do not wish to install the project, you can directly access it hosted online here: ...
+- If you do not wish to install the project, you can directly access it hosted online here: https://vendingmachine-8ccf0.web.app/vending
 
 ## Running the project 
 
