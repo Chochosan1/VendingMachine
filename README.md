@@ -9,7 +9,7 @@ Versions:
 
 **Online hosting**: 
 
-- If you do not wish to install the project, you can directly access it hosted online here: https://vendingmachine-8ccf0.web.app/vending
+- If you do not wish to install the project, you can directly access it here: https://vendingmachine-8ccf0.web.app/vending
 
 ## Running the project 
 
