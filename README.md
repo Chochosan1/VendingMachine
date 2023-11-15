@@ -19,7 +19,7 @@ Versions:
 
 *If you do not wish to install the project, you can directly access it hosted online here: ...
 
-### [Vending Machine] Allowed coin denominations
+## [Vending Machine] Allowed coin denominations
 
 You can only insert the following coin denominations into the machine:
 * 0.1
@@ -29,3 +29,24 @@ You can only insert the following coin denominations into the machine:
 * 2
 
 The used currency is BGN.
+
+* You can add coins by using the '+' sign button in the bottom right corner when browsing the main page. This will open a panel where you can do it. 
+* You can always reset the process and get all of your coins returned. Use the 'Reset Coins' button located in the same panel.
+
+## [Vending Machine] Project information
+
+### Product specifics
+
+Explore multiple products available for purchase on the main page. Initially, these products come from a mocked API. 
+
+* Each product is limited to a maximum of 15 pieces in stock 
+* Each product has a unique price. No duplicate prices.
+
+There is also an 'Add Product' page that allows you to add another product. The rules above must be followed else the page will not let you submit the product.
+
+* Purchasing a product will spend as many coins as required and the return the rest as change.
+
+### Responsive design
+
+The design is made responsive so that it can be viewed both on desktop & mobile.
+
