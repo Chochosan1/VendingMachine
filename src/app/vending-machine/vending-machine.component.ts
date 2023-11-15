@@ -34,7 +34,9 @@ export class VendingMachineComponent {
 
         const remainingCoinBalance = this.dataService.coinBalance.toFixed(1);
 
-        this.snackBar.open(`You spent ${product.price} BGN for ${product.title}. Your change is ${remainingCoinBalance} BGN. Please, take it. Coin balance reset.`, 'Close', {
+        this.snackBar.open(`You spent ${product.price} BGN for ${product.title}. Your change is ${remainingCoinBalance} BGN. Please, take it. 
+        Coin balance reset.`, 
+        'Close', {
           duration: 8000,
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
@@ -46,7 +48,8 @@ export class VendingMachineComponent {
     else {
       const neededAmount = (product.price - this.dataService.coinBalance).toFixed(1);
 
-      this.snackBar.open(`Not enough balance to purchase ${product.title}. You need ${neededAmount} BGN more.`, 'Close', {
+      this.snackBar.open(`Not enough balance to purchase ${product.title}. You need ${neededAmount} BGN more.`, 
+      'Close', {
         duration: 5000,
         horizontalPosition: 'center',
         verticalPosition: 'bottom',
