@@ -46,7 +46,7 @@ Explore multiple products available for purchase on the main page. Initially, th
 
 There is also an 'Add Product' page that allows you to add another product. The rules above must be followed else the page will not let you submit the product.
 
-* Purchasing a product will spend as many coins as required and the return the rest as change.
+* Purchasing a product will spend as many coins as required and then return the rest as change.
 
 ### Responsive design
 
