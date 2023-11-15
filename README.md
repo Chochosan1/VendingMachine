@@ -9,13 +9,13 @@ Versions:
 
 ## Running the project 
 
-1/ Download the project from github
+1. Download the project from github
 
-2/ Run npm install to install all necessary files
+2. Run npm install to install all necessary files
 
-3/ Run ng serve
+3. Run ng serve
 
-4/ You should now be able to view the project in your browser (by going to http://localhost:4200 for example)
+4. You should now be able to view the project in your browser (by going to http://localhost:4200 for example)
 
 *If you do not wish to install the project, you can directly access it hosted online here: ...
 
@@ -28,4 +28,4 @@ You can only insert the following coin denominations into the machine:
 * 1
 * 2
 
-The used currently is BGN.
+The used currency is BGN.
