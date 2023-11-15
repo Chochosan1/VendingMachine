@@ -18,7 +18,7 @@ export class AddCoinsComponent {
 
   constructor(protected dataService: DataService, private formBuilder: FormBuilder, private snackBar: MatSnackBar, public dialogRef: MatDialogRef<AddCoinsComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.coinForm = this.formBuilder.group({
-      amount: ['', [Validators.required, Validators.min(0), ValidCoinAmount(), MaxOneDecimalAllowed()]],
+      amount: ['', [Validators.required, ValidCoinAmount(), MaxOneDecimalAllowed()]],
     });
   }
 

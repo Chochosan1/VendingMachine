@@ -1,20 +1,22 @@
 import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
-export function PositiveInteger(): ValidatorFn {
+export function IsAnInteger(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
         const value: number = control.value;
 
-        //skip validation if the control is not touched/dirty
-        if (control.touched === false && control.dirty === false) {
+        console.log(value);
+
+        //skip validation if the control is not touched/dirty or if it has no value
+        if ((control.touched === false && control.dirty === false) || value === undefined || value === null || control.value === "") {
             return null;
         }
 
         //validation success
-        if (Number.isInteger(value) && value >= 0) {
+        if (Number.isInteger(value)) {
             return null;
         }
 
         //validation fail
-        return { 'positiveInteger': { value: control.value } };
+        return { 'integer': { value: control.value } };
     };
 }

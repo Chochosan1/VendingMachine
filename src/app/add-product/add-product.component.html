@@ -31,7 +31,7 @@
             <div class="error-text" *ngIf="hasError('inStockAmount', 'required')"><i class="bi bi-exclamation-triangle"></i> Amount in stock is required</div>
             <div class="error-text" *ngIf="hasError('inStockAmount', 'min')"><i class="bi bi-exclamation-triangle"></i> Can't be less than zero</div>
             <div class="error-text" *ngIf="hasError('inStockAmount', 'max')"><i class="bi bi-exclamation-triangle"></i> Each product's amount in stock can be a maximum of 15</div>
-            <div class="error-text" *ngIf="hasError('inStockAmount', 'positiveInteger')"><i class="bi bi-exclamation-triangle"></i> Must be a positive integer</div>
+            <div class="error-text" *ngIf="hasError('inStockAmount', 'integer')"><i class="bi bi-exclamation-triangle"></i> Must be an integer. No decimals</div>
         </div>
 
         <div class="form-group">

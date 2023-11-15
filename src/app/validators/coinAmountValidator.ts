@@ -7,7 +7,7 @@ export function ValidCoinAmount(): ValidatorFn {
         const amount: number = control.value;
 
         //skip validation if the control is not touched/dirty
-        if (control.touched === false && control.dirty === false) {
+        if ((control.touched === false && control.dirty === false) || control.value === undefined || control.value === null || control.value === "") {
             return null;
         }
 
