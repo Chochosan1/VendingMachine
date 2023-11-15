@@ -7,6 +7,10 @@ Versions:
 - Node: 19.8.1
 - Package manager: npm 9.5.1
 
+Online hosting: 
+
+- If you do not wish to install the project, you can directly access it hosted online here: ...
+
 ## Running the project 
 
 1. Download the project from github
@@ -16,8 +20,6 @@ Versions:
 3. Run ng serve
 
 4. You should now be able to view the project in your browser (by going to http://localhost:4200 for example)
-
-*If you do not wish to install the project, you can directly access it hosted online here: ...
 
 ## [Vending Machine] Allowed coin denominations
 
