@@ -6,8 +6,6 @@ export function MaxOneDecimalAllowed(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const regex = /^-?\d+(\.\d{0,1})?$/; // regex that allows digits with an optional single decimal place
 
-    console.log(control.value);
-
     //skip validation if the control is not touched/dirty or if it has no value
     if ((control.touched === false && control.dirty === false) || control.value === undefined || control.value === null || control.value === "") {
       return null;
