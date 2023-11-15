@@ -7,6 +7,7 @@ import { UniquePriceValidator } from '../validators/uniquePriceValidator';
 import { MaxOneDecimalAllowed } from '../validators/maxOneDecimalValidator';
 import { Product } from '../product.model';
 import { IsAnInteger } from '../validators/positiveIntegerValidator';
+import { DEFAULT_IMAGE_URL } from '../app.constants';
 
 /**Handles all logic for the 'Add New Product' form. */
 @Component({
@@ -27,9 +28,10 @@ export class AddProductComponent implements OnInit {
     this.productForm = this.fb.group({
       title: ['', [Validators.required, Validators.maxLength(20)]],
       description: ['', [Validators.required, Validators.maxLength(30)]],
-      price: ['', [Validators.required, Validators.min(0.1), MaxOneDecimalAllowed(), UniquePriceValidator(this.dataService.products ? this.dataService.products : [])]],
+      price: ['', [Validators.required, Validators.min(0.1), MaxOneDecimalAllowed(), 
+        UniquePriceValidator(this.dataService.products ? this.dataService.products : [])]],
       inStockAmount: ['', [Validators.required, Validators.min(0), Validators.max(15), IsAnInteger()]],
-      imageUrl: ['https://i0.wp.com/sumac.com.hk/wp-content/uploads/2022/11/placeholder.png?ssl=1', Validators.required],
+      imageUrl: [DEFAULT_IMAGE_URL, Validators.required],
     });
   }
 

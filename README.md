@@ -1,6 +1,6 @@
 # VendingMachine
 
-The project was developed using Angular.
+This is a single page application that emulates a vending machine.
 
 Versions:
 - Angular: 15.2.10
