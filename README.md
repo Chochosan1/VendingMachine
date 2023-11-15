@@ -1,27 +1,31 @@
 # VendingMachine
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+The project was developed using Angular.
 
-## Development server
+Versions:
+- Angular: 15.2.10
+- Node: 19.8.1
+- Package manager: npm 9.5.1
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Running the project 
 
-## Code scaffolding
+1/ Download the project from github
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2/ Run npm install to install all necessary files
 
-## Build
+3/ Run ng serve
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+4/ You should now be able to view the project in your browser (by going to http://localhost:4200 for example)
 
-## Running unit tests
+*If you do not wish to install the project, you can directly access it hosted online here: ...
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### [Vending Machine] Allowed coin denominations
 
-## Running end-to-end tests
+You can only insert the following coin denominations into the machine:
+* 0.1
+* 0.2
+* 0.5
+* 1
+* 2
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The used currently is BGN.
